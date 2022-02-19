@@ -1,0 +1,33 @@
+.dashboard{
+    background-color: crimson;
+    display: none;
+    position:fixed;
+    height: 99vh;
+    border-radius: 5px;
+    display: grid;
+    width: 12.5%;
+    grid-template-rows:1fr 5fr;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(41, 40, 40, 0.322);
+}
+
+.dashboard ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.dashboard a{
+    color: white;
+    text-decoration: none;
+}
+
+.dashboard li{
+    height: 7%;
+}
+
+.dashboard li:hover , .dashboard li:hover>a{
+    background-color: white;
+    color:crimson;
+    padding-top: 5%;
+}

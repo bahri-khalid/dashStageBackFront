@@ -1,0 +1,46 @@
+<%- include("./partials/head") %> 
+<%- include("./partials/dash")%>
+<section id="content">
+
+    <div class="container">
+        <div class="content2">
+            <div class="left"></div>
+            <div class="right">
+                <h2>Welcom</h2>
+                <div class="data">
+
+                    <label for="title">Title</label>
+                    <input type="text" class="input" id='title' value="<%-product.title%>" >
+                </div>
+                <div class="data">
+
+                    <label for="image">Image</label>
+                    <input type="text" class="input" id ="image " value="<%-product.image%>">
+                </div>
+                <div class="data">
+
+                    <label for="category">Category</label>
+                    <input type="text" class="input" id="category" value="<%-product.category%>">
+                </div>
+                <div class="data">
+
+                    <label for="price">Price</label>
+                    <input type="number" class="input" id ="price" value="<%-product.price%>">
+                </div>
+                <div class="data">
+
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id =" quantity" class="input" value="<%-product.quantity%>">
+                </div>
+                <div class="data">
+                    <label for="desc">Description</label>
+                    <textarea name="text" id ="desc"  class="input" value="<%-product.description%>"  id="field" cols="40" rows="10"></textarea>
+
+                </div>
+                <input type="submit" value="Submit" class="input" id="submit">
+            </div>
+    
+        </div>
+    </div>
+</section>
+<%- include("./partials/footer") %>

@@ -1,0 +1,54 @@
+<%- include("./partials/head") %> 
+<%- include("./partials/dash")%>
+<section id="content">
+    <%- include("./partials/nav")%>
+    <main>
+        <%let date = new Date%>
+        <%- include("./partials/counter")%>
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Recent Users</h3>
+                    <i class='bx bx-search' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>SignupDate</th>
+                            <th>Email</th>
+                            <th>TataleSales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%users.forEach((user,index) => {%>
+                            <% if(((date.getTime()-user.signupDate.getTime())<240*60*60*1000)){%>
+                            <tr>
+                                <td>
+                                    <img src="<%- (index%3)? "fimaleUser.png":"maleUser.png" %> ">
+                                    <p>
+                                            <%-user.name%>
+                                    </p>
+
+                                </td>
+                                <td><%- Intl.DateTimeFormat().format(user.signupDate)  %> </td>
+                                <td><span class="status completed"><%- user.email  %> </span></td>
+                                <%let totaleSales = 0%>
+                                <%orders.forEach((order)=>{%>
+                                    <%if(order.userId === user.id){%>
+                                        <% totaleSales += order.bill %> 
+                                    <%}%>
+                                <%})%>
+                                <td><span class="status validate"><%- totaleSales  %> $ </span></td>
+                            </tr>	
+                            <% } %> 
+                        <%});  %> 
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </main>
+</section>
+<%- include("./partials/footer") %> 

@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+body{
+    position: relative;
+    margin: 5px;
+    margin-right: 0;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 7fr;
+}
+
+.userslist{
+    border:2px crimson solid;
+    grid-column: 2/7;
+    background-color: cyan;
+}
+
+.nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr  1fr;
+    background-color: crimson;
+    position: sticky;
+    top: 5px;
+    height: 10%;
+    margin-bottom: 20px;
+}

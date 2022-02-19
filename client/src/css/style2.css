@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Quando&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+:root{
+    --crimson: crimson;
+}
+
+.container{
+    margin-left: -10px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+
+}
+
+.container::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #F9F9F9;
+    background-size: cover;
+    z-index: -1;
+    filter: blur(50px);
+}
+
+.content2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: whitesmoke;
+}
+
+.left{
+    background: url(../img/product.jpg) no-repeat left;
+    background-size: cover;
+}
+
+.right{
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    grid-gap: 15px;
+    margin: 40px ;
+    margin-bottom: 20px;
+}
+
+.right >input{
+    height: 40px;
+}
+
+.input{
+    background: rgb(238, 238, 238);
+    border: 3px solid rgba(135, 206, 250, 0);
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    transition: .3s;
+}
+
+.input:hover{
+    background: rgb(219, 218, 218);
+}
+
+.input:focus{
+    background: white;
+    border-color: rgba(135, 206, 250, 1);
+    box-shadow: 1px 1px 4px 2px var(--crimson);
+}
+.right h2{
+    position: relative;
+    padding-bottom: 10px;
+}
+.right >h2::after{
+
+    content:"";
+    position: absolute;
+    background: var(--crimson);
+    height: 5px;
+    border-radius: 2px;
+    width: 60px;
+    top:85%;
+    left: 40%;
+    animation: move 3s both infinite  alternate-reverse ;
+
+}
+
+@keyframes move {
+
+    form{
+        left:0%;
+        background: lightcoral;
+    }
+    to{
+        left:60%;
+        background: var(--crimson);
+        transform: rotateY(90deg);
+    }
+}
+#submit{
+    background: var(--crimson);
+    cursor: pointer;
+    color: white;
+    font-weight: 100;
+    font-size: 1em;
+}
+#submit:hover{
+    background: var(--crimson);
+}
+
+.data{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+@media only screen and (max-width: 900px) {
+  .content2{
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns:none;
+    background: whitesmoke;
+}
+}

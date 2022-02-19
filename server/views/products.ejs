@@ -1,0 +1,61 @@
+<%- include("./partials/head") %> 
+<%- include("./partials/dash")%>
+<section id="content">
+    <%- include("./partials/nav")%>
+    <main>
+        <%let date = new Date%>
+        <%- include("./partials/counter")%>
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Recent Products</h3>
+                    <i class='bx bx-search' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>  
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Title</th>
+                            <th>Date Added</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>TataleSales</th>
+                            <th>Modify</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%products.forEach((product,index) => {%>
+                            <% if(((date.getTime()-product.date_added.getTime())>24*60*60*1000)){%>
+                                <%console.log(products)%>
+                            <tr>
+                                <td>
+                                    <img src="<%- (index%3)? "fimaleUser.png":"maleUser.png" %> ">
+                                    <p>
+                                            <%-product.title%>
+                                    </p>
+
+                                </td>
+                                <td><%- Intl.DateTimeFormat().format(product.date_added)  %> </td>
+                                <td><span class="status completed"><%- product.category  %> </span></td>
+                                <td><span class="status completed"><%- product.price  %> $ </span></td>
+                                <%let totaleSales = 0%>
+                                <%orders.forEach((order)=>{%>
+                                    <% order.items.forEach((prd)=>{%>
+                                        <% if(prd.productId===product.id){ %> 
+                                                <% totaleSales += prd.price*prd.quantity %> 
+                                            <% } %>  
+                                    <%}) %> 
+                                <%})%>
+                                <td><span class="status validate"><%- totaleSales  %> $ </span></td>
+                                <td><a href="productsMng/<%-product.id%>"><span class="status setting"><i class='bx bxs-cog' ></i> </span></a></td>
+                            </tr>	
+                            <% } %> 
+                        <%});  %> 
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </main>     
+</section>
+<%- include("./partials/footer") %> 

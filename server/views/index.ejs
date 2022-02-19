@@ -1,0 +1,94 @@
+<%- include("./partials/head")  %> 
+<%-include("./partials/dash")-%>
+
+
+	
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<%- include("./partials/nav")%>
+
+		<!-- MAIN -->
+		<main>
+			
+			<%let date = new Date()%>
+			<%- include("./partials/counter") %>
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
+								<th>Cost</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%orders.forEach((order,index) => {%>
+								<% if(((date.getTime()-order.date_added.getTime())<10*60*60*1000)){%>
+								<tr>
+									<td>
+										<img src="<%- (index%3)? "fimaleUser.png":"maleUser.png" %> ">
+										<p>
+										<%users.forEach(user=>{%>
+											<%if(order.userId===user.id){%>
+												<%-user.name%>
+											<%}%>
+										<%})%>
+										</p>
+
+									</td>
+									<td><%- Intl.DateTimeFormat().format(order.data_added)  %> </td>
+									<td><span class="status completed"><%- order.status  %> </span></td>
+									<td><button class="status validate">validate</button></td>
+								</tr>	
+								<% } %> 
+							<%});  %> 
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>Todos</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+<%- include("./partials/footer")%>

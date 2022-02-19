@@ -1,0 +1,33 @@
+<ul class="box-info">
+    <li>
+        <i class='bx bxs-calendar-check' ></i>
+        <span class="text">
+            <% let newusers= 0%>
+            <% let visitors= users.length %> 
+            <% let bill=0 %> 
+            <% const date = new Date() %> 
+            <%orders.forEach(order=>{%>
+                <% bill += order.bill %> 
+                <% if((date.getTime()-order.date_added.getTime())<10*60*60*1000){%>
+                    <% newusers++%> 
+                <%} %> 
+                <% }) %> 
+            <h3><%- newusers %> </h3>
+            <p>New Order</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-group' ></i>
+        <span class="text">
+            <h3><%- visitors%></h3>
+            <p>Visitors</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-dollar-circle' ></i>
+        <span class="text">
+            <h3>$<%-bill%></h3>
+            <p>Total Sales</p>
+        </span>
+    </li>
+</ul>
